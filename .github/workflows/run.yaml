@@ -1,0 +1,41 @@
+# Test Workflow
+name: bug
+
+# Controls when the action will run.
+on:
+  workflow_dispatch:
+  push:
+    branches: main
+
+jobs:
+  create-expo-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup nushell
+        uses: hustcer/setup-nu@v3.5
+        with:
+          # check-latest: true
+          version: '0.84'
+          enable-plugins: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: version
+        shell: nu {0}
+        run: version
+
+      - name: test case 1 
+        shell: nu {0}
+        env:
+          RUST_BACKTRACE: full
+        run: open file | from json | get message
+
+      - name: test case 2 
+        shell: nu {0}
+        env:
+          RUST_BACKTRACE: full
+        run: open full | from json | get currentPage | get 0 | get runtimeVersion
+

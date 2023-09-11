@@ -1,0 +1,14 @@
+{
+    "name": "preview",
+    "id": "xxxx-21cb-4722-xxxxx-fcd545b866ba",
+    "currentPage": [
+      {
+        "branch": "preview",
+        "message": "\"Preview Update Build: Version 0.2.0\" (4 hours ago by xxx)",
+        "runtimeVersion": "0.2.0",
+        "isRollBackToEmbedded": false,
+        "group": "xxxxxx-ef8d-4d64-b3a7-xxxx",
+        "platforms": "android, ios"
+      }
+    ]
+  }
