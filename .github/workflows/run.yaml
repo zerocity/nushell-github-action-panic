@@ -53,7 +53,8 @@ jobs:
         run: eas update:list --non-interactive --json --limit 1 --branch preview
 
       - name: test case 3
+        if: ${{ failure() }}
         shell: nu {0}
         env:
           RUST_BACKTRACE: full
-        run: eas update:list --non-interactive --json --limit 1 --branch preview | inspect
+        run: eas update:list --non-interactive --json --limit 1 --branch preview
