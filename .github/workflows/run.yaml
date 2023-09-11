@@ -45,6 +45,13 @@ jobs:
           expo-version: latest
           # token: ${{ secrets.EXPO_ACCESS_TOKEN }}
 
+      - name: version
+        shell: nu {0}
+        run: version
+
+      - name: test case 3 from bash
+        run: eas update:list --non-interactive --json --limit 1 --branch preview
+
       - name: test case 3
         shell: nu {0}
         env:
