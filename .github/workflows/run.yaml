@@ -39,3 +39,14 @@ jobs:
           RUST_BACKTRACE: full
         run: open full | from json | get currentPage | get 0 | get runtimeVersion
 
+      - uses: expo/expo-github-action@v8
+        with:
+          eas-version: latest
+          expo-version: latest
+          # token: ${{ secrets.EXPO_ACCESS_TOKEN }}
+
+      - name: test case 3
+        shell: nu {0}
+        env:
+          RUST_BACKTRACE: full
+        run: eas update:list --non-interactive --json --limit 1 --branch preview | inspect
